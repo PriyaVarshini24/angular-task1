@@ -1,0 +1,45 @@
+<div class="container">
+<div class="row">
+<div class="col-md-6 offset-md-3 ">
+<form [formGroup]= "userForm" (ngSubmit)= "submitUser()">
+<div class="form-group">
+<input class="form-control" type="email"  formControlName="emailid" placeholder="Enter email ID">
+<div *ngIf="f.emailid.errors && f.emailid.touched" >
+<div class="text-danger" *ngIf="f.emailid.errors?.['email']">Please enter a valid email id</div>
+<div class="text-danger" *ngIf="f.emailid.errors?.['minlength']" >email id too short</div>
+<div class="text-danger" *ngIf="f.emailid.errors?.['required']" >Email Id is required</div>
+</div>
+<br><br>
+<input class="form-control" type="password"  formControlName="pwd" placeholder="Enter password">
+<div *ngIf="f.pwd.errors && f.pwd.touched">
+<div class="text-danger" *ngIf="f.pwd.errors?.['minlength']">Password should contain more than 2 characters</div>
+<div class="text-danger" *ngIf="f.emailid.errors?.['required']" >Password is required</div>
+</div>
+<br><br>
+<input class="form-control" type="password"  formControlName="repwd" placeholder="Re-Enter password">
+<div *ngIf="userForm.errors?.['passwordMismatchError'] && f.repwd.touched">
+    <div class="text-danger">Password doesn't match</div>
+</div>  
+<br><br>
+<input class="form-control" type="text" formControlName="username" placeholder="Enter your Username">
+<div *ngIf="f.username.errors && f.username.touched" >
+<div class="text-danger" *ngIf="f.username.errors?.['required']">Username is required</div>
+<div class="text-danger" *ngIf="f.username.errors?.['pattern']" >Username should only contain alphabets</div>
+</div>
+<br><br>
+<input class="form-control" type="text" formControlName=" address" placeholder="Enter address">
+<div *ngIf="f.address.errors && f.address.touched" >
+<div class="text-danger" *ngIf="f.address.errors?.['required']">Address is required</div>
+<!-- <div class="text-danger" *ngIf="f.address.errors?.['pattern']" >Address should contain only numbers and alpnabets</div> -->
+</div>
+</div>
+<br><br>
+<div class="container bg-none">
+    <div class="col-md-12 text-center">
+<button type="button" class="btn btn-success">Submit</button>
+
+</div></div>
+</form>
+</div>
+</div>
+</div>
